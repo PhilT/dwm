@@ -2,6 +2,20 @@ dwm - dynamic window manager
 ============================
 dwm is an extremely fast, small, and dynamic window manager for X.
 
+Forked from http://git.suckless.org/dwm
+
+Customizations
+--------------
+
+This fork includes:
+
+* Column layout
+* Shortcuts for starting various apps/tools (see config.h)
+* Dark colour scheme
+* Push up/down - reorder clients
+
+Defaults to columns with nmaster 2 (3 columns: 2 main left and centre and stacking column on the right).
+
 
 Requirements
 ------------
