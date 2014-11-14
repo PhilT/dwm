@@ -3,10 +3,10 @@
 
 /* appearance */
 static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
-static const char normbordercolor[] = "#444444";
+static const char normbordercolor[] = "#333333";
 static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
-static const char selbordercolor[]  = "#555555";
+static const char selbordercolor[]  = "#444444";
 static const char selbgcolor[]      = "#666666";
 static const char selfgcolor[]      = "#aaaaaa";
 static const unsigned int borderpx  = 5;        /* border pixel of windows */
@@ -48,7 +48,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "rxvt", NULL };
+static const char *termcmd[]  = { "urxvt", NULL };
 static const char *killcmd[]  = { "pkill", "-f", "startdwm", NULL };
 static const char *chromcmd[] = { "google-chrome", NULL };
 static const char *inkcmd[] = { "inkscape", NULL };
@@ -123,3 +123,4 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
+
