@@ -1,5 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 #include "push.c"
+#include "gaplessgrid.c"
 
 /* appearance */
 static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
@@ -15,7 +16,7 @@ static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6" };
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
@@ -33,6 +34,7 @@ static const Layout layouts[] = {
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[]=",      tile },    /* first entry is default */
 	{ "[M]",      monocle },
+  { "###",      gaplessgrid }
 };
 
 /* key definitions */
@@ -53,8 +55,9 @@ static const char *killcmd[]  = { "pkill", "-f", "startdwm", NULL };
 static const char *chromcmd[] = { "google-chrome-stable", NULL };
 static const char *inkcmd[] = { "inkscape", NULL };
 static const char *gimpcmd[] = { "gimp", NULL };
+static const char *xdkcmd[] = { "intel-xdk-ea", NULL };
 static const char *pcmanfmcmd[] = { "dbus-launch", "pcmanfm", NULL };
-static const char *editcmd[] = { "atom", NULL };
+static const char *libcmd[] = { "calibre", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -64,10 +67,11 @@ static Key keys[] = {
 // APPS
 	{ MODKEY,                       XK_c,      spawn,          {.v = termcmd } },    // Terminal
 	{ MODKEY,                       XK_f,      spawn,          {.v = pcmanfmcmd } }, // File Browser
-	{ MODKEY,                       XK_t,      spawn,          {.v = editcmd } },    // Text Editor
+	{ MODKEY,                       XK_l,      spawn,          {.v = libcmd } },    // Book Library
 	{ MODKEY,                       XK_w,      spawn,          {.v = chromcmd } },   // Web browser
 	{ MODKEY,                       XK_v,      spawn,          {.v = inkcmd } },     // Vector graphics
 	{ MODKEY,                       XK_r,      spawn,          {.v = gimpcmd } },    // Raster graphics
+	{ MODKEY,                       XK_x,      spawn,          {.v = xdkcmd } },    // Intel XDK IDE
 
 // CLIENT MANIPULATION
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
@@ -87,8 +91,9 @@ static Key keys[] = {
 // LAYOUTS
 	{ MODKEY|ShiftMask,             XK_c,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
-//	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY|ShiftMask,             XK_g,      setlayout,      {.v = &layouts[4]} },
 //	{ MODKEY|ShiftMask,             XK_h,      setlayout,      {.v = &layouts[4]} },
 //	{ MODKEY|ShiftMask,             XK_o,      setlayout,      {.v = &layouts[5]} },
 
@@ -105,6 +110,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
+	TAGKEYS(                        XK_5,                      4)
+	TAGKEYS(                        XK_6,                      5)
 };
 
 /* button definitions */
