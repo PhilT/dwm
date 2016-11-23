@@ -50,7 +50,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "urxvt", NULL };
+static const char *termcmd[]  = { "st", NULL };
 static const char *killcmd[]  = { "pkill", "-f", "startdwm", NULL };
 static const char *chromcmd[] = { "google-chrome-stable", NULL };
 static const char *inkcmd[] = { "inkscape", NULL };
@@ -130,4 +130,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
