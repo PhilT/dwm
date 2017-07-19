@@ -531,7 +531,6 @@ clientmessage(XEvent *e)
 }
 
 void
-<<<<<<< HEAD
 col(Monitor *m) {
   unsigned int i, n, h, w, x, y,mw;
   Client *c;
