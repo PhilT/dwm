@@ -62,7 +62,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *pcmanfmcmd[] = { "dbus-launch", "pcmanfm", NULL };
-static const char *chromcmd[] = { "chromium", NULL };
+static const char *firefoxcmd[] = { "firefox", NULL };
 static const char *inkcmd[] = { "inkscape", NULL };
 static const char *gimpcmd[] = { "gimp", NULL };
 
@@ -79,7 +79,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_f,      spawn,          {.v = pcmanfmcmd } }, // File Browser
-	{ MODKEY,                       XK_w,      spawn,          {.v = chromcmd } },   // Web browser
+	{ MODKEY,                       XK_w,      spawn,          {.v = firefoxcmd } }, // Web browser
 	{ MODKEY,                       XK_v,      spawn,          {.v = inkcmd } },     // Vector graphics
 	{ MODKEY,                       XK_r,      spawn,          {.v = gimpcmd } },    // Raster graphics
 
