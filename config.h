@@ -59,12 +59,13 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-i", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *pcmanfmcmd[] = { "dbus-launch", "pcmanfm", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
 static const char *inkcmd[] = { "inkscape", NULL };
 static const char *gimpcmd[] = { "gimp", NULL };
+static const char *flameshotcmd[] = { "flameshot", "gui", NULL };
 
 static const char *togglemutecmd[] =  { "mute", NULL };
 static const char *volumeup[] =       { "volup", NULL };
@@ -78,10 +79,11 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_f,      spawn,          {.v = pcmanfmcmd } }, // File Browser
-	{ MODKEY,                       XK_w,      spawn,          {.v = firefoxcmd } }, // Web browser
-	{ MODKEY,                       XK_v,      spawn,          {.v = inkcmd } },     // Vector graphics
-	{ MODKEY,                       XK_r,      spawn,          {.v = gimpcmd } },    // Raster graphics
+	{ MODKEY,                       XK_f,      spawn,          {.v = pcmanfmcmd } },   // File Browser
+	{ MODKEY,                       XK_w,      spawn,          {.v = firefoxcmd } },   // Web browser
+	{ MODKEY,                       XK_v,      spawn,          {.v = inkcmd } },       // Vector graphics
+	{ MODKEY,                       XK_r,      spawn,          {.v = gimpcmd } },      // Raster graphics
+	{ MODKEY|ControlMask,           XK_s,      spawn,          {.v = flameshotcmd } }, // Screenshot
 
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
