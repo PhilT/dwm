@@ -60,69 +60,69 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-i", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "kitty", NULL };
 static const char *pcmanfmcmd[] = { "dbus-launch", "pcmanfm", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
-static const char *inkcmd[] = { "inkscape", NULL };
-static const char *gimpcmd[] = { "gimp", NULL };
 static const char *flameshotcmd[] = { "flameshot", "gui", NULL };
+static const char *suspendcmd[] = { "systemctl", "suspend", NULL };
+static const char *shutdowncmd[] = { "shutdown", "now", NULL };
 
 static const char *togglemutecmd[] =  { "mute", NULL };
 static const char *volumeup[] =       { "volup", NULL };
 static const char *volumedown[] =     { "voldn", NULL };
-static const char *brightnessup[] =   { "light", "-A", "5"};
-static const char *brightnessdown[] = { "light", "-U", "5"};
+static const char *brightnessup[] =   { "light", "-A", "5" };
+static const char *brightnessdown[] = { "light", "-U", "5" };
 
 #include <X11/XF86keysym.h>
 
 static const Key keys[] = {
-	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_c,      spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_f,      spawn,          {.v = pcmanfmcmd } },   // File Browser
-	{ MODKEY,                       XK_w,      spawn,          {.v = firefoxcmd } },   // Web browser
-	{ MODKEY,                       XK_v,      spawn,          {.v = inkcmd } },       // Vector graphics
-	{ MODKEY,                       XK_r,      spawn,          {.v = gimpcmd } },      // Raster graphics
-	{ MODKEY|ControlMask,           XK_s,      spawn,          {.v = flameshotcmd } }, // Screenshot
+	/* modifier             key        function        argument */
+	{ MODKEY,               XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,               XK_c,      spawn,          {.v = termcmd } },
+	{ MODKEY,               XK_f,      spawn,          {.v = pcmanfmcmd } },   // File Browser
+	{ MODKEY,               XK_w,      spawn,          {.v = firefoxcmd } },   // Web browser
+	{ MODKEY|ShiftMask,     XK_s,      spawn,          {.v = flameshotcmd } }, // Screenshot
 
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,                       XK_q,      killclient,     {0} },
+	{ MODKEY,               XK_b,      togglebar,      {0} },
+	{ MODKEY,               XK_j,      focusstack,     {.i = +1 } },
+	{ MODKEY,               XK_k,      focusstack,     {.i = -1 } },
+	{ MODKEY,               XK_i,      incnmaster,     {.i = +1 } },
+	{ MODKEY,               XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY,               XK_h,      setmfact,       {.f = -0.05} },
+	{ MODKEY,               XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY,               XK_Return, zoom,           {0} },
+	{ MODKEY,               XK_Tab,    view,           {0} },
+	{ MODKEY,               XK_q,      killclient,     {0} },
 
-	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY|ShiftMask,             XK_c,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY|ShiftMask,             XK_g,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY|ShiftMask,     XK_t,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY|ShiftMask,     XK_f,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY|ShiftMask,     XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY|ShiftMask,     XK_c,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY|ShiftMask,     XK_g,      setlayout,      {.v = &layouts[4]} },
 
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY,               XK_space,  setlayout,      {0} },
+	{ MODKEY|ShiftMask,     XK_space,  togglefloating, {0} },
+	{ MODKEY,               XK_0,      view,           {.ui = ~0 } },
+	{ MODKEY|ShiftMask,     XK_0,      tag,            {.ui = ~0 } },
+	{ MODKEY,               XK_comma,  focusmon,       {.i = -1 } },
+	{ MODKEY,               XK_period, focusmon,       {.i = +1 } },
+	{ MODKEY|ShiftMask,     XK_comma,  tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,     XK_period, tagmon,         {.i = +1 } },
+	TAGKEYS(                XK_1,                      0)
+	TAGKEYS(                XK_2,                      1)
+	TAGKEYS(                XK_3,                      2)
+	TAGKEYS(                XK_4,                      3)
+	TAGKEYS(                XK_5,                      4)
+	TAGKEYS(                XK_6,                      5)
+	{ MODKEY|ShiftMask,     XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,     XK_BackSpace, spawn,       {.v = suspendcmd } },
+	{ MODKEY|ControlMask,   XK_BackSpace, spawn,       {.v = shutdowncmd } },
 
-  { 0,                            XF86XK_AudioMute, spawn,      {.v = togglemutecmd } },
-  { 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = volumeup } },
-  { 0,                            XF86XK_AudioLowerVolume, spawn, {.v = volumedown } },
-  { 0,                            XF86XK_MonBrightnessUp, spawn, {.v = brightnessup} },
-  { 0,                            XF86XK_MonBrightnessDown, spawn, {.v = brightnessdown} },
+  { 0,                    XF86XK_AudioMute, spawn,      {.v = togglemutecmd } },
+  { 0,                    XF86XK_AudioRaiseVolume, spawn, {.v = volumeup } },
+  { 0,                    XF86XK_AudioLowerVolume, spawn, {.v = volumedown } },
+  { 0,                    XF86XK_MonBrightnessUp, spawn, {.v = brightnessup} },
+  { 0,                    XF86XK_MonBrightnessDown, spawn, {.v = brightnessdown} },
 };
 
 /* button definitions */
