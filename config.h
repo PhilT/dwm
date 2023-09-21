@@ -70,8 +70,8 @@ static const char *shutdowncmd[] = { "shutdown", "now", NULL };
 static const char *togglemutecmd[] =  { "mute", NULL };
 static const char *volumeup[] =       { "volup", NULL };
 static const char *volumedown[] =     { "voldn", NULL };
-static const char *brightnessup[] =   { "light", "-A", "5" };
-static const char *brightnessdown[] = { "light", "-U", "5" };
+static const char *brightnessup[] =   { "adjustlight", "up", NULL };
+static const char *brightnessdown[] = { "adjustlight", "down", NULL };
 
 #include <X11/XF86keysym.h>
 
