@@ -64,6 +64,8 @@ static const char *termcmd[]  = { "kitty", NULL };
 static const char *pcmanfmcmd[] = { "dbus-launch", "pcmanfm", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
 static const char *flameshotcmd[] = { "flameshot", "gui", NULL };
+static const char *keepmenucmd[] = { "kp", NULL };
+static const char *mailcmd[] = { "nvim", "+Himalaya", NULL };
 static const char *suspendcmd[] = { "systemctl", "suspend", NULL };
 static const char *shutdowncmd[] = { "shutdown", "now", NULL };
 
@@ -82,6 +84,8 @@ static const Key keys[] = {
 	{ MODKEY,               XK_f,      spawn,          {.v = pcmanfmcmd } },   // File Browser
 	{ MODKEY,               XK_w,      spawn,          {.v = firefoxcmd } },   // Web browser
 	{ MODKEY|ShiftMask,     XK_s,      spawn,          {.v = flameshotcmd } }, // Screenshot
+	{ MODKEY,               XK_backslash,spawn,        {.v = keepmenucmd } },  // Passwords
+	{ MODKEY,               XK_m,      spawn,          {.v = mailcmd } },      // Mail (In Neovim)
 
 	{ MODKEY,               XK_b,      togglebar,      {0} },
 	{ MODKEY,               XK_j,      focusstack,     {.i = +1 } },
