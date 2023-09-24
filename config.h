@@ -7,7 +7,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Ubuntu Nerd Font:size=13:antialias=true:autohint=true" };
-static const char dmenufont[]       = "Ubuntu Nerd Font:size=13:antialias=true:autohint=true";
+static const char dmenufont[]       = "UbuntuMono Nerd Font:size=13:antialias=true:autohint=true";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#dddddd";
@@ -65,7 +65,7 @@ static const char *pcmanfmcmd[] = { "dbus-launch", "pcmanfm", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
 static const char *flameshotcmd[] = { "flameshot", "gui", NULL };
 static const char *keepmenucmd[] = { "kp", NULL };
-static const char *mailcmd[] = { "nvim", "+Himalaya", NULL };
+static const char *mailcmd[] = { "kitty", "nvim", "+Himalaya", NULL };
 static const char *suspendcmd[] = { "systemctl", "suspend", NULL };
 static const char *shutdowncmd[] = { "shutdown", "now", NULL };
 
