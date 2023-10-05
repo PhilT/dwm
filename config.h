@@ -11,8 +11,8 @@ static const char dmenufont[]       = "UbuntuMono Nerd Font:size=13:antialias=tr
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#dddddd";
-static const char col_gray4[]       = "#f5f5f5";
-static const char col_cyan[]        = "#006699";
+static const char col_gray4[]       = "#e0e0e0";
+static const char col_cyan[]        = "#224455";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
