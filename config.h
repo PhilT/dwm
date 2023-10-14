@@ -28,7 +28,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ NULL,       NULL,       NULL,       0,            False,       -1 },
+	{ NULL,     NULL,       "FL Studio 21",       0,            1,           -1 },
+//	{ NULL,       NULL,       NULL,       0,            False,       -1 },
 };
 
 /* layout(s) */
@@ -63,8 +64,10 @@ static const char *dmenucmd[] = { "dmenu_run", "-i", "-m", dmenumon, "-nb", col_
 static const char *termcmd[]  = { "kitty", NULL };
 static const char *pcmanfmcmd[] = { "dbus-launch", "pcmanfm", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
+static const char *godotcmd[] = { "godot4", NULL };
 static const char *flameshotcmd[] = { "flameshot", "gui", NULL };
 static const char *keepmenucmd[] = { "kp", NULL };
+static const char *slackcmd[] = { "slack", NULL };
 static const char *mailcmd[] = { "kitty", "nvim", "+Himalaya", NULL };
 static const char *suspendcmd[] = { "systemctl", "suspend", NULL };
 static const char *shutdowncmd[] = { "shutdown", "now", NULL };
@@ -83,9 +86,11 @@ static const Key keys[] = {
 	{ MODKEY,               XK_c,      spawn,          {.v = termcmd } },
 	{ MODKEY,               XK_f,      spawn,          {.v = pcmanfmcmd } },   // File Browser
 	{ MODKEY,               XK_w,      spawn,          {.v = firefoxcmd } },   // Web browser
+	{ MODKEY,               XK_g,      spawn,          {.v = godotcmd } },     // 3D Engine
 	{ MODKEY|ShiftMask,     XK_s,      spawn,          {.v = flameshotcmd } }, // Screenshot
 	{ MODKEY,               XK_backslash,spawn,        {.v = keepmenucmd } },  // Passwords
 	{ MODKEY,               XK_m,      spawn,          {.v = mailcmd } },      // Mail (In Neovim)
+	{ MODKEY,               XK_s,      spawn,          {.v = slackcmd } },     // Slack
 
 	{ MODKEY,               XK_b,      togglebar,      {0} },
 	{ MODKEY,               XK_j,      focusstack,     {.i = +1 } },
