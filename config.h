@@ -6,8 +6,8 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Ubuntu Nerd Font:size=13:antialias=true:autohint=true" };
-static const char dmenufont[]       = "UbuntuMono Nerd Font:size=13:antialias=true:autohint=true";
+static const char *fonts[]          = { "monospace:size=13:antialias=true:autohint=true" };
+static const char dmenufont[]       = "monospace:size=13:antialias=true:autohint=true";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#dddddd";
@@ -64,7 +64,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-i", "-m", dmenumon, "-nb", col_
 static const char *termcmd[]  = { "kitty", NULL };
 static const char *pcmanfmcmd[] = { "dbus-launch", "pcmanfm", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
-static const char *godotcmd[] = { "godot4", NULL };
+static const char *godotcmd[] = { "steam-run", "/data/apps/godot4/godot4", NULL };
 static const char *flameshotcmd[] = { "flameshot", "gui", NULL };
 static const char *keepmenucmd[] = { "kp", NULL };
 static const char *slackcmd[] = { "slack", NULL };
