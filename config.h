@@ -1,6 +1,8 @@
 /* Copied from config.def.h */
 /* See LICENSE file for copyright and license details. */
 
+#define SESSION_FILE "/tmp/dwm-session"
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -29,9 +31,9 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ NULL,     NULL,       "FL Studio 21",       0,            True,           -1 },
-	{ NULL,     NULL,       "Godot",       1 << 0,            0,           1 },
-	{ NULL,     NULL,       "Slack",       1 << 5,            0,           1 },
+	{ NULL,     NULL,       "FL Studio 21",     0,      True,           -1 },
+	{ NULL,     NULL,       "Godot",        1 << 0,     False,           1 },
+	{ NULL,     NULL,       "Slack",        1 << 5,     False,           1 },
 //	{ NULL,       NULL,       NULL,       0,            False,       -1 },
 };
 
