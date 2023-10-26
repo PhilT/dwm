@@ -21,7 +21,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6" };
+static const char *tags[] = { "", "2", "3", "󰎄", "", "󰖵" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -29,7 +29,9 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ NULL,     NULL,       "FL Studio 21",       0,            1,           -1 },
+	{ NULL,     NULL,       "FL Studio 21",       0,            True,           -1 },
+	{ NULL,     NULL,       "Godot",       1 << 0,            0,           1 },
+	{ NULL,     NULL,       "Slack",       1 << 5,            0,           1 },
 //	{ NULL,       NULL,       NULL,       0,            False,       -1 },
 };
 
@@ -61,17 +63,18 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-i", "-m", dmenumon, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "kitty", NULL };
-static const char *pcmanfmcmd[] = { "dbus-launch", "pcmanfm", NULL };
-static const char *firefoxcmd[] = { "firefox", NULL };
-static const char *godotcmd[] = { "steam-run", "/data/apps/godot4/godot4", NULL };
+static const char *dmenucmd[] =     { "dmenu_run", "-i", "-m", dmenumon, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *termcmd[]  =     { "kitty", NULL };
+static const char *pcmanfmcmd[] =   { "dbus-launch", "pcmanfm", NULL };
+static const char *cmuscmd[] =      { "kitty", "cmus", NULL };
+static const char *firefoxcmd[] =   { "firefox", NULL };
+static const char *godotcmd[] =     { "steam-run", "/data/apps/godot4/godot4", NULL };
 static const char *flameshotcmd[] = { "flameshot", "gui", NULL };
-static const char *keepmenucmd[] = { "kp", NULL };
-static const char *slackcmd[] = { "slack", NULL };
-static const char *mailcmd[] = { "kitty", "nvim", "+Himalaya", NULL };
-static const char *suspendcmd[] = { "systemctl", "suspend", NULL };
-static const char *shutdowncmd[] = { "shutdown", "now", NULL };
+static const char *keepmenucmd[] =  { "kp", NULL };
+static const char *slackcmd[] =     { "slack", NULL };
+static const char *mailcmd[] =      { "kitty", "nvim", "+Himalaya", NULL };
+static const char *suspendcmd[] =   { "systemctl", "suspend", NULL };
+static const char *shutdowncmd[] =  { "shutdown", "now", NULL };
 
 static const char *togglemutecmd[] =  { "mute", NULL };
 static const char *volumeup[] =       { "volup", NULL };
@@ -90,7 +93,8 @@ static const Key keys[] = {
 	{ MODKEY,               XK_g,      spawn,          {.v = godotcmd } },     // 3D Engine
 	{ MODKEY|ShiftMask,     XK_s,      spawn,          {.v = flameshotcmd } }, // Screenshot
 	{ MODKEY,               XK_backslash,spawn,        {.v = keepmenucmd } },  // Passwords
-	{ MODKEY,               XK_m,      spawn,          {.v = mailcmd } },      // Mail (In Neovim)
+	{ MODKEY,               XK_m,      spawn,          {.v = cmuscmd } },      // Music Player
+	{ MODKEY,               XK_e,      spawn,          {.v = mailcmd } },      // Email (In Neovim)
 	{ MODKEY,               XK_s,      spawn,          {.v = slackcmd } },     // Slack
 
 	{ MODKEY,               XK_b,      togglebar,      {0} },
@@ -125,7 +129,8 @@ static const Key keys[] = {
 	TAGKEYS(                XK_4,                      3)
 	TAGKEYS(                XK_5,                      4)
 	TAGKEYS(                XK_6,                      5)
-	{ MODKEY|ShiftMask,     XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,     XK_q,         quit,        {0} },
+	{ MODKEY|ControlMask|ShiftMask, XK_q, quit,        {1} }, 
 	{ MODKEY|ShiftMask,     XK_BackSpace, spawn,       {.v = suspendcmd } },
 	{ MODKEY|ControlMask,   XK_BackSpace, spawn,       {.v = shutdowncmd } },
 
