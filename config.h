@@ -32,7 +32,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ NULL,     NULL,       "FL Studio 21",     0,      True,           -1 },
-	{ NULL,     NULL,       "Godot",        1 << 0,     False,           1 },
+	{ NULL,     NULL,       "Godot",        1 << 0,     False,           0 },
 	{ NULL,     NULL,       "Slack",        1 << 5,     False,           1 },
 //	{ NULL,       NULL,       NULL,       0,            False,       -1 },
 };
