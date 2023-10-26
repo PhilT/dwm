@@ -23,7 +23,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "2", "3", "󰎄", "", "󰖵" };
+static const char *tags[] = { "", "2", "", "󰎄", "", "󰖵" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -84,6 +84,12 @@ static const char *volumedown[] =     { "voldn", NULL };
 static const char *brightnessup[] =   { "adjustlight", "up", NULL };
 static const char *brightnessdown[] = { "adjustlight", "down", NULL };
 
+static const char *cmus_pause[] =   { "cmus-remote", "--pause", NULL };
+static const char *cmus_play[] =    { "cmus-remote", "--play", NULL };
+static const char *cmus_next[] =    { "cmus-remote", "--next", NULL };
+static const char *cmus_prev[] =    { "cmus-remote", "--prev", NULL };
+static const char *cmus_ff[] =      { "cmus-remote", "--seek", "+5", NULL };
+
 #include <X11/XF86keysym.h>
 
 static const Key keys[] = {
@@ -115,6 +121,13 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,     XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY|ShiftMask,     XK_c,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY|ShiftMask,     XK_g,      setlayout,      {.v = &layouts[4]} },
+
+  /* cmus control */
+	{ MODKEY|ControlMask,   XK_space,  spawn,          {.v = cmus_pause } },
+	{ MODKEY|ControlMask,   XK_p,      spawn,          {.v = cmus_play } },
+	{ MODKEY|ControlMask,   XK_k,      spawn,          {.v = cmus_next } },
+	{ MODKEY|ControlMask,   XK_h,      spawn,          {.v = cmus_prev } },
+	{ MODKEY|ControlMask,   XK_l,      spawn,          {.v = cmus_ff } },
 
 	{ MODKEY,               XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,     XK_space,  togglefloating, {0} },
