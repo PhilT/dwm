@@ -23,7 +23,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "2", "", "󰎄", "", "󰖵" };
+static const char *tags[] = { "", "󰆍", "", "󰎄", "", "󰖵" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -70,7 +70,7 @@ static const char *termcmd[]  =     { "kitty", NULL };
 static const char *pcmanfmcmd[] =   { "dbus-launch", "pcmanfm", NULL };
 static const char *cmuscmd[] =      { "kitty", "cmus", NULL };
 static const char *firefoxcmd[] =   { "firefox", NULL };
-static const char *godotcmd[] =     { "steam-run", "/data/apps/godot4/godot4", NULL };
+static const char *godotcmd[] =     { "steam-run", "godot4", NULL };
 static const char *flameshotcmd[] = { "flameshot", "gui", NULL };
 static const char *keepmenucmd[] =  { "kp", NULL };
 static const char *slackcmd[] =     { "slack", NULL };
