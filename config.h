@@ -2,6 +2,7 @@
 /* See LICENSE file for copyright and license details. */
 
 #define SESSION_FILE "/home/phil/tmp/dwm-session"
+#define XDG_CONFIG_HOME "/home/phil/.config"
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -69,7 +70,8 @@ static const char *dmenucmd[] =     { "dmenu_run", "-i", "-m", dmenumon, "-nb", 
 static const char *termcmd[]  =     { "kitty", NULL };
 static const char *pcmanfmcmd[] =   { "dbus-launch", "pcmanfm", NULL };
 static const char *cmuscmd[] =      { "kitty", "cmus", NULL };
-static const char *firefoxcmd[] =   { "firefox", NULL };
+static const char *firefoxhome[] =  { "firefox", "--profile", XDG_CONFIG_HOME "/firefox/home", NULL };
+static const char *firefoxwork[] =  { "firefox", "--profile", XDG_CONFIG_HOME "/firefox/work", NULL };
 static const char *godotcmd[] =     { "steam-run", "godot4", NULL };
 static const char *flameshotcmd[] = { "flameshot", "gui", NULL };
 static const char *keepmenucmd[] =  { "kp", NULL };
@@ -97,7 +99,8 @@ static const Key keys[] = {
 	{ MODKEY,               XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,               XK_c,      spawn,          {.v = termcmd } },
 	{ MODKEY,               XK_f,      spawn,          {.v = pcmanfmcmd } },   // File Browser
-	{ MODKEY,               XK_w,      spawn,          {.v = firefoxcmd } },   // Web browser
+	{ MODKEY,               XK_w,      spawn,          {.v = firefoxhome } },  // Web browser (home profile)
+	{ MODKEY|ShiftMask,     XK_w,      spawn,          {.v = firefoxwork } },  // Web browser (work profile)
 	{ MODKEY,               XK_g,      spawn,          {.v = godotcmd } },     // 3D Engine
 	{ MODKEY|ShiftMask,     XK_s,      spawn,          {.v = flameshotcmd } }, // Screenshot
 	{ MODKEY,               XK_backslash,spawn,        {.v = keepmenucmd } },  // Passwords
