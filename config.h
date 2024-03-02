@@ -35,6 +35,7 @@ static const Rule rules[] = {
 	{ NULL,     NULL,       "FL Studio 21", 1 << 3,      True,           0 },
 	{ NULL,     NULL,       "Godot",        1 << 0,     False,           0 },
 	{ NULL,     NULL,       "Slack",        1 << 5,     False,           1 },
+	{ NULL,     NULL,       "Bluemail",     0,          False,           1 },
 //	{ NULL,       NULL,       NULL,       0,            False,       -1 },
 };
 
@@ -76,7 +77,7 @@ static const char *godotcmd[] =     { "steam-run", "godot4", NULL };
 static const char *flameshotcmd[] = { "flameshot", "gui", NULL };
 static const char *keepmenucmd[] =  { "kp", NULL };
 static const char *slackcmd[] =     { "slack", NULL };
-static const char *mailcmd[] =      { "kitty", "nvim", "+Himalaya", NULL };
+static const char *mailcmd[] =      { "bluemail", "--no-sandbox", NULL };
 static const char *suspendcmd[] =   { "systemctl", "suspend", NULL };
 static const char *shutdowncmd[] =  { "shutdown", "now", NULL };
 
@@ -105,7 +106,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,     XK_s,      spawn,          {.v = flameshotcmd } }, // Screenshot
 	{ MODKEY,               XK_backslash,spawn,        {.v = keepmenucmd } },  // Passwords
 	{ MODKEY,               XK_m,      spawn,          {.v = cmuscmd } },      // Music Player
-	{ MODKEY,               XK_e,      spawn,          {.v = mailcmd } },      // Email (In Neovim)
+	{ MODKEY,               XK_e,      spawn,          {.v = mailcmd } },      // Email
 	{ MODKEY,               XK_s,      spawn,          {.v = slackcmd } },     // Slack
 
 	{ MODKEY,               XK_b,      togglebar,      {0} },
