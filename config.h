@@ -34,8 +34,8 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ NULL,     NULL,       "FL Studio 21", 1 << 3,      True,           0 },
 	{ NULL,     NULL,       "Godot",        1 << 0,     False,           0 },
-	{ NULL,     NULL,       "Slack",        1 << 5,     False,           1 },
-	{ NULL,     NULL,       "Bluemail",     0,          False,           1 },
+	{ NULL,     NULL,       "Slack",        1 << 5,     False,           0 },
+	{ NULL,     NULL,       "Thunderbird",       0,     False,           0 },
 //	{ NULL,       NULL,       NULL,       0,            False,       -1 },
 };
 
@@ -71,13 +71,15 @@ static const char *dmenucmd[] =     { "dmenu_run", "-i", "-m", dmenumon, "-nb", 
 static const char *termcmd[]  =     { "kitty", NULL };
 static const char *pcmanfmcmd[] =   { "dbus-launch", "pcmanfm", NULL };
 static const char *cmuscmd[] =      { "kitty", "cmus", NULL };
-static const char *firefoxhome[] =  { "firefox", "--profile", XDG_CONFIG_HOME "/firefox/home", NULL };
+static const char *mattercmd[] =    { "kitty", "matter", NULL };
+static const char *firefoxhome[] =  { "firefox", NULL };
 static const char *firefoxwork[] =  { "firefox", "--profile", XDG_CONFIG_HOME "/firefox/work", NULL };
 static const char *godotcmd[] =     { "steam-run", "godot4", NULL };
+static const char *goxelcmd[] =     { "gox", NULL };
 static const char *flameshotcmd[] = { "flameshot", "gui", NULL };
 static const char *keepmenucmd[] =  { "kp", NULL };
 static const char *slackcmd[] =     { "slack", NULL };
-static const char *mailcmd[] =      { "bluemail", "--no-sandbox", NULL };
+static const char *mailcmd[] =      { "thunderbird", NULL };
 static const char *suspendcmd[] =   { "systemctl", "suspend", NULL };
 static const char *shutdowncmd[] =  { "shutdown", "now", NULL };
 
@@ -102,10 +104,10 @@ static const Key keys[] = {
 	{ MODKEY,               XK_f,      spawn,          {.v = pcmanfmcmd } },   // File Browser
 	{ MODKEY,               XK_w,      spawn,          {.v = firefoxhome } },  // Web browser (home profile)
 	{ MODKEY|ShiftMask,     XK_w,      spawn,          {.v = firefoxwork } },  // Web browser (work profile)
-	{ MODKEY,               XK_g,      spawn,          {.v = godotcmd } },     // 3D Engine
+	{ MODKEY,               XK_g,      spawn,          {.v = goxelcmd } },     // Voxel editor
 	{ MODKEY|ShiftMask,     XK_s,      spawn,          {.v = flameshotcmd } }, // Screenshot
 	{ MODKEY,               XK_backslash,spawn,        {.v = keepmenucmd } },  // Passwords
-	{ MODKEY,               XK_m,      spawn,          {.v = cmuscmd } },      // Music Player
+	{ MODKEY,               XK_m,      spawn,          {.v = mattercmd } },    // Load Neovim in matter/ project
 	{ MODKEY,               XK_e,      spawn,          {.v = mailcmd } },      // Email
 	{ MODKEY,               XK_s,      spawn,          {.v = slackcmd } },     // Slack
 
