@@ -33,9 +33,8 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ NULL,     NULL,       "FL Studio 21", 1 << 3,      True,           0 },
-	{ NULL,     NULL,       "Godot",        1 << 0,     False,           0 },
-	{ NULL,     NULL,       "Slack",        1 << 5,     False,           0 },
-	{ NULL,     NULL,       "Thunderbird",       0,     False,           0 },
+	{ NULL,     NULL,       "Slack",        1 << 5,     False,           1 },
+	{ NULL,     NULL,       "Thunderbird",       0,     False,           1 },
 //	{ NULL,       NULL,       NULL,       0,            False,       -1 },
 };
 
@@ -73,7 +72,6 @@ static const char *pcmanfmcmd[] =   { "dbus-launch", "pcmanfm", NULL };
 static const char *cmuscmd[] =      { "kitty", "cmus", NULL };
 static const char *mattercmd[] =    { "kitty", "matter", NULL };
 static const char *firefoxhome[] =  { "firefox", NULL };
-static const char *firefoxwork[] =  { "firefox", "--profile", XDG_CONFIG_HOME "/firefox/work", NULL };
 static const char *godotcmd[] =     { "steam-run", "godot4", NULL };
 static const char *goxelcmd[] =     { "gox", NULL };
 static const char *flameshotcmd[] = { "flameshot", "gui", NULL };
@@ -95,6 +93,9 @@ static const char *cmus_next[] =    { "cmus-remote", "--next", NULL };
 static const char *cmus_prev[] =    { "cmus-remote", "--prev", NULL };
 static const char *cmus_ff[] =      { "cmus-remote", "--seek", "+5", NULL };
 
+static const char *screenoffcmd[] = { "xrandr", "--output", "DP-4", "--off", NULL };
+static const char *screenoncmd[] = { "xrandr", "--output", "DP-4", "--auto", "--right-of", "DP-2", NULL };
+
 #include <X11/XF86keysym.h>
 
 static const Key keys[] = {
@@ -103,7 +104,6 @@ static const Key keys[] = {
 	{ MODKEY,               XK_c,      spawn,          {.v = termcmd } },
 	{ MODKEY,               XK_f,      spawn,          {.v = pcmanfmcmd } },   // File Browser
 	{ MODKEY,               XK_w,      spawn,          {.v = firefoxhome } },  // Web browser (home profile)
-	{ MODKEY|ShiftMask,     XK_w,      spawn,          {.v = firefoxwork } },  // Web browser (work profile)
 	{ MODKEY,               XK_g,      spawn,          {.v = goxelcmd } },     // Voxel editor
 	{ MODKEY|ShiftMask,     XK_s,      spawn,          {.v = flameshotcmd } }, // Screenshot
 	{ MODKEY,               XK_backslash,spawn,        {.v = keepmenucmd } },  // Passwords
@@ -121,6 +121,9 @@ static const Key keys[] = {
 	{ MODKEY,               XK_Return, zoom,           {0} },
 	{ MODKEY,               XK_Tab,    view,           {0} },
 	{ MODKEY,               XK_q,      killclient,     {0} },
+
+  { MODKEY,               XK_Page_Down,   spawn,     {.v = screenoffcmd } },
+  { MODKEY,               XK_Page_Up,   spawn,       {.v = screenoncmd } },
 
 	{ MODKEY|ShiftMask,     XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,     XK_f,      setlayout,      {.v = &layouts[1]} },
